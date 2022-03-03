@@ -1,0 +1,14 @@
+**/*.svg
+package.json
+/dist
+.eslintignore
+.editorconfig
+.gitignore
+.prettierignore
+*.lock
+yarn-error.log
+.history
+CNAME
+/build
+/public
+node_modules
