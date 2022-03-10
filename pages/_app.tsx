@@ -1,8 +1,8 @@
 import type { AppProps } from 'next/app';
 import '../styles/index.css';
 import { ThemeProvider } from 'styled-components';
-import { themeDark, themeLight } from '../styles/theme';
-import { GlobalStyled } from '../styles/GlobalStyled';
+import { themeDark, themeLight } from '@styles/theme';
+import { GlobalStyled } from '@styles/GlobalStyled';
 import ThemeSwitcher from '@components/ThemeSwitcher';
 import { useAppSelector } from '@store/index';
 import { wrapper } from '@store/index';

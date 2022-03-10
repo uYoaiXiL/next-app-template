@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '@store/index';
 import { increment, decrement, incrementByAmount, incrementAsync } from '@store/reducers/count';
-import { bigFont } from '../styles/css';
+import { bigFont } from '@styles/css';
 
 const CountContainer = styled.div`
   width: 500px;
