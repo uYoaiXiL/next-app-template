@@ -3,21 +3,26 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import countReducer from '@store/reducers/count';
 import commonReducer from '@store/reducers/common';
 import { createWrapper } from 'next-redux-wrapper';
+import { nextReduxCookieMiddleware, wrapMakeStore } from 'next-redux-cookie-wrapper';
 
-export function makeStore() {
-  return configureStore({
+export const makeStore = wrapMakeStore(() =>
+  configureStore({
     reducer: { count: countReducer, common: commonReducer },
     devTools: true,
-  });
-}
-
-const store = makeStore();
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().prepend(
+        nextReduxCookieMiddleware({
+          subtrees: ['count.count'],
+        })
+      ),
+  })
+);
 
 export type AppStore = ReturnType<typeof makeStore>;
 
-export type AppState = ReturnType<typeof store.getState>;
+export type AppState = ReturnType<AppStore['getState']>;
 
-export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = AppStore['dispatch'];
 
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
@@ -30,4 +35,4 @@ export const useAppDispatch = () => useDispatch<AppDispatch>();
 
 export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
 
-export const wrapper = createWrapper<AppStore>(makeStore);
+export const wrapper = createWrapper<AppStore>(makeStore, { debug: true });
