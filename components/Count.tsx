@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '@store/index';
-import { increment, decrement, incrementByAmount, incrementAsync } from '@store/reducers/count';
+import {
+  increment,
+  decrement,
+  incrementByAmount,
+  incrementAsync,
+  set,
+} from '@store/reducers/count';
 import { bigFont } from '@styles/css';
 
 const CountContainer = styled.div`
@@ -40,6 +46,7 @@ const Count: React.FC = (props) => {
         <ActionItem onClick={() => dispatch(decrement())}>decrement</ActionItem>
         <ActionItem onClick={() => dispatch(incrementByAmount(10))}>incrementByAmount</ActionItem>
         <ActionItem onClick={() => dispatch(incrementAsync(20))}>setCountReduxAsync</ActionItem>
+        <ActionItem onClick={() => dispatch(set(88))}>clear</ActionItem>
       </Actions>
     </CountContainer>
   );

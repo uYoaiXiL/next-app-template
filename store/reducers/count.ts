@@ -19,6 +19,9 @@ const reducers = {
   incrementByAmount: (state, action: PayloadAction<number>) => {
     state.count += action.payload;
   },
+  set: (state: CountState, action: PayloadAction<number>) => {
+    state.count = action.payload;
+  },
 };
 export const incrementAsync =
   (count: number): AppThunk =>
@@ -44,6 +47,6 @@ export const countSlice = createSlice<CountState, typeof reducers>({
     },
   },
 });
-export const { increment, decrement, incrementByAmount } = countSlice.actions;
+export const { increment, decrement, incrementByAmount, set } = countSlice.actions;
 const countReducer = countSlice.reducer;
 export default countReducer;
