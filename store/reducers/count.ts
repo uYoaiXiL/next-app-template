@@ -10,6 +10,7 @@ const initialState: CountState = {
   count: 0,
 };
 const reducers = {
+  /*自增*/
   increment: (state: CountState) => {
     state.count++;
   },

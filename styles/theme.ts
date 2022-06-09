@@ -12,6 +12,7 @@ export const themeLight: DefaultTheme = {
   bgColor: '#fff',
   color: '#333',
   subColor: '#666',
+
   ...themeCommon,
 };
 

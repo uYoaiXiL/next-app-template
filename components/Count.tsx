@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '@store/index';
 import {
@@ -11,7 +11,7 @@ import {
 import { bigFont } from '@styles/css';
 
 const CountContainer = styled.div`
-  width: 500px;
+  width: 100%;
   margin: 50px auto auto;
   display: flex;
   align-items: center;
@@ -24,16 +24,26 @@ const Value = styled.h4`
   ${bigFont}
 `;
 const Actions = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
+  flex-direction: column;
+  @media (min-width: 640px) {
+    flex-direction: row;
+  }
 `;
 const ActionItem = styled.div`
-  margin: 0 12px;
+  width: 100%;
+  margin: 12px;
   padding: 10px 20px;
   background-color: ${(props) => props.theme.primaryColor};
   color: white;
   cursor: pointer;
   border-radius: 5px;
+  text-align: center;
+  @media only screen and (min-width: 640px) {
+    margin: 0 12px;
+  }
 `;
 const Count: React.FC = (props) => {
   const { count } = useAppSelector((state) => state.count);
@@ -46,7 +56,7 @@ const Count: React.FC = (props) => {
         <ActionItem onClick={() => dispatch(decrement())}>decrement</ActionItem>
         <ActionItem onClick={() => dispatch(incrementByAmount(10))}>incrementByAmount</ActionItem>
         <ActionItem onClick={() => dispatch(incrementAsync(20))}>setCountReduxAsync</ActionItem>
-        <ActionItem onClick={() => dispatch(set(88))}>clear</ActionItem>
+        <ActionItem onClick={() => dispatch(set(0))}>clear</ActionItem>
       </Actions>
     </CountContainer>
   );

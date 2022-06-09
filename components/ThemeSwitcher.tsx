@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '@store/index';
 import styled from 'styled-components';
 import { FiMoon, FiSun } from 'react-icons/fi';
-import { setThemeReduxAsync } from '@store/reducers/common';
+import { setThemeAsync } from '@store/reducers/common';
 
 const ThemeSwitcherBox = styled.div`
   position: fixed;
@@ -18,7 +18,7 @@ const ThemeSwitcher = () => {
   const SwitchIcon = useMemo(() => (theme === 'light' ? FiMoon : FiSun), [theme]);
 
   return (
-    <ThemeSwitcherBox onClick={() => dispatch(setThemeReduxAsync())}>
+    <ThemeSwitcherBox onClick={() => dispatch(setThemeAsync())}>
       <SwitchIcon fontSize={22} />
     </ThemeSwitcherBox>
   );

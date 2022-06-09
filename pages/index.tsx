@@ -4,10 +4,10 @@ import { incrementByAmount } from '@store/reducers/count';
 import { wrapper } from '@store/index';
 import styled from 'styled-components';
 import Count from '@components/Count';
-
+import Layout from '@components/Layout';
 const Hello = styled.h2`
   text-align: center;
-  padding-top: 50px;
+  padding-top: 3.5rem;
 `;
 const Home: NextPage<{ name: string }> = (props) => {
   return (
@@ -15,8 +15,10 @@ const Home: NextPage<{ name: string }> = (props) => {
       <Head>
         <title>Index</title>
       </Head>
-      <Hello>{`hello ${props.name}!`.toUpperCase()}</Hello>
-      <Count />
+      <Layout>
+        <Hello>{`hello ${props.name}!`.toUpperCase()}</Hello>
+        <Count />
+      </Layout>
     </>
   );
 };

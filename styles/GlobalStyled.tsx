@@ -15,10 +15,12 @@ export const GlobalStyled = createGlobalStyle<any>`
     font-family: 'PingFangSC-Semibold,Alata,Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
     background-color: ${(props) => props.theme.bgColor};
     color: ${(props) => props.theme.color};
     font-size: 16px;
-    width: 100%;
+    width: 100vw;
+    min-height: 100vh;
   }
 
   html, body {

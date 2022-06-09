@@ -21,16 +21,6 @@ app.prepare().then(() => {
     },
   };
   // server.use(proxy(options));
-  // router.get('/a/:id', async ctx => {
-  //   const id = ctx.params.id
-  //   await handle(ctx.req, ctx.res, {
-  //     pathname: '/a',
-  //     query: {
-  //       id,
-  //     },
-  //   })
-  //   ctx.respond = false
-  // })
   router.all('(.*)', async (ctx) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;

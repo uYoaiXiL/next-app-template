@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { AppThunk } from '@store/index';
 
 interface CommonState {
   theme: 'dark' | 'light';
@@ -12,23 +13,18 @@ const reducers = {
     state.theme = state.theme === 'light' ? 'dark' : 'light';
   },
 };
-export const setThemeReduxAsync = createAsyncThunk('theme/async', async () => {
+export const setThemeAsync = (): AppThunk => async (dispatch, getState) => {
   await new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
     }, 100);
   });
-  return;
-});
+  await dispatch(setTheme());
+};
 export const commonSlice = createSlice<CommonState, typeof reducers>({
   name: 'common',
   initialState,
   reducers,
-  extraReducers: (builder) => {
-    builder.addCase(setThemeReduxAsync.fulfilled, (state) => {
-      state.theme = state.theme === 'light' ? 'dark' : 'light';
-    });
-  },
 });
 export const { setTheme } = commonSlice.actions;
 const commonReducer = commonSlice.reducer;
